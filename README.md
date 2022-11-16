@@ -1,7 +1,7 @@
-# Admin-Oetete-V1.2
+# Admin-Fontein-V1.3
 
 
-teknologi yang digunakan dalam pembuatan Admin-Oetete. 
+teknologi yang digunakan dalam pembuatan Admin-Fontein. 
 
 - Node Js - v16.18.0
 - Express Js - 4.16.1
