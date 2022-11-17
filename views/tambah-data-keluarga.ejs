@@ -29,13 +29,14 @@
           <i class="fa-solid fa-users ms-2"></i>&nbsp&nbspTAMBAH DATA KELUARGA
         </h3>
         <hr />
+        <script src="/javascripts/inputnum.js"></script>
 
         <form method="POST" action="/tambah_data/tambah-data-keluarga" novalidate>
 
           
           <div class="form-label">
             <label>Nomor KK</label>
-            <input type="number" name="no_kk" class="form-control" />
+            <input type="text" name="no_kk" class="form-control" maxlength="16" onkeypress="return onlyNumberKey(event), isNumber(event)" />
           </div>
 
           <div class="form-label">
