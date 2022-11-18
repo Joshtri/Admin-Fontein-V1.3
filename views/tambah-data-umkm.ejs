@@ -23,7 +23,7 @@
       <!-- header start -->
       <%- include('sidebar'); -%>
       <!-- header end   -->
-
+      <script src="/javascripts/inputnum.js"></script>
       <div class="col-md-10 p-5 pt-5">
         <h4>
           <i class="fa-solid fa-cart-shopping ms-2"></i>&nbsp&nbspTAMBAH DATA
@@ -77,7 +77,7 @@
               <div class="col-md-6">
                 <div class="form-label">
                   <label>Umur</label>
-                  <input type="number" name="umur" class="form-control" />
+                  <input type="text" name="umur" class="form-control" maxlength="2" onkeypress="return onlyNumberKey(event), isNumber(event)"/>
                 </div>
               </div>
 
