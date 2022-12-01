@@ -22,6 +22,7 @@
 
 
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+  <script src="/javascripts/inputnum.js"></script>
   <title>Data Pindah</title>
 </head>
 
@@ -251,7 +252,7 @@
                   <tr>
                     <th style="width:50%">Nomor KK</th>
                     <td>
-                      <input type="number" name="kel_nomor_kk" class="form-control" /> 
+                      <input type="text" name="kel_nomor_kk" class="form-control" maxlength="16" onkeypress="return onlyNumberKey(event), isNumber(event)" /> 
                     </td>
                   </tr>
 
@@ -264,7 +265,7 @@
                   <tr>
                     <th style="width:50%">NIK</th>
                     <td>
-                      <input type="number" name="penduduk_nik" class="form-control" />
+                      <input type="text" name="penduduk_nik" class="form-control" maxlength="16" onkeypress="return onlyNumberKey(event), isNumber(event)" />
                     </td>
                   </tr>
                   <tr>

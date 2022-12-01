@@ -16,6 +16,7 @@
   <link rel="icon" href="/public/favicon.ico" />
 
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+  <script src="/javascripts/inputnum.js"></script>
   <title>Data Penduduk</title>
 </head>
 
@@ -210,13 +211,13 @@
                   <th style="width:50%">NIK</th>
                   <td>
                     <!-- menambah target binding berdasarkan atribut name -->
-                    <input type="number" name="nik" class="form-control" />
+                    <input type="text" name="nik" class="form-control" maxlength="16" onkeypress="return onlyNumberKey(event), isNumber(event)" />
                   </td>
                 </tr>
                 <tr>
                   <th style="width:50%">No KK</th>
                   <td>
-                    <input type="number" name="kel_no_kk" class="form-control" />
+                    <input type="text" name="kel_no_kk" class="form-control" maxlength="16" onkeypress="return onlyNumberKey(event), isNumber(event)" />
                   </td>
                 </tr>
                 <tr>

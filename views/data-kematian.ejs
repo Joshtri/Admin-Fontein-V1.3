@@ -19,6 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="/javascripts/inputnum.js"></script>
     <!-- header start -->
     <%- include('header'); -%>
     <!-- header end   -->
@@ -95,7 +96,7 @@
         <div class="modal-dialog modal-dialog-centered">
         <div class=" modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Detail Kelahiran</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Detail Kematian</h5>
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -175,7 +176,7 @@
             <!-- menambah form 🔥🔥🔥🔥🔥🔥 -->
             <div class="modal-content ">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabelEdit">Edit Data Kelahiran</h5>
+                <h5 class="modal-title" id="exampleModalLabelEdit">Edit Data Kematian</h5>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -187,7 +188,7 @@
                       <th style="width:50%">NIK</th>
                       <td>
                         <!-- menambah target binding berdasarkan atribut name -->
-                        <input type="number" name="nik" class="form-control" />
+                        <input type="text" name="nik" class="form-control" maxlength="16" onkeypress="return onlyNumberKey(event), isNumber(event)" />
                       </td>
                     </tr>
 

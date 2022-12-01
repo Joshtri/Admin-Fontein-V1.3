@@ -23,6 +23,7 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+  <script src="/javascripts/inputnum.js"></script>
   <!-- header start -->
   <%- include('header'); -%>
   <!-- header end   -->
@@ -213,8 +214,7 @@
                   <th style="width:50%">No KK</th>
                   <td>
                     <!-- menambah target binding berdasarkan atribut name -->
-                    <input type="number" name="no_kk" class="form-control" />
-                  </td>
+                    <input type="text" name="no_kk" class="form-control" maxlength="16" onkeypress="return onlyNumberKey(event), isNumber(event)"/>                  </td>
                 </tr>
 
                 <tr>
@@ -232,13 +232,13 @@
                 <tr>
                   <th style="width:50%">RT</th>
                   <td>
-                    <input type="number" name="rt" class="form-control" />
+                    <input type="text" name="rt" class="form-control" maxlength="2" onkeypress="return onlyNumberKey(event), isNumber(event)" />
                   </td>
                 </tr>
                 <tr>
                   <th style="width:50%">RW</th>
                   <td>
-                    <input type="number" name="rw" class="form-control" />
+                    <input type="text" name="rw" class="form-control" maxlength="2" onkeypress="return onlyNumberKey(event), isNumber(event)" />
                   </td>
                 </tr>
                 <tr>

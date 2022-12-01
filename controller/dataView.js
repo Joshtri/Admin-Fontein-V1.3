@@ -40,7 +40,7 @@ exports.view_keluarga = (req, res) => {
 
 //View data
 exports.view_umkm = (req, res) => {
-  //connect db.
+  //connect db.s
   pool.getConnection((err, connection) => {
     if (err) throw err; //NOT CONNECTED.
     console.log(`Connected as ID ` + connection.threadId);
