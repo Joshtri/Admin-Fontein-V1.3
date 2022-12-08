@@ -40,6 +40,18 @@ router.post('/tambah-data-pengguna', isLoggedIn,  UserController.create_pengguna
 router.get('/tambah-data-umkm', isLoggedIn, UserController.form_umkm);
 router.post('/tambah-data-umkm', isLoggedIn, UserController.create_umkm);
 
+//GET Tambah data Keluarga UMKM
+router.get('/tambah-data-keluarga-umkm', isLoggedIn,  UserController.form_keluarga_umkm);
+router.post('/tambah-data-keluarga-umkm', isLoggedIn,  UserController.create_keluarga_umkm); 
+
+//GET Tambah data Penduduk UMKM
+router.get('/tambah-data-penduduk-umkm', isLoggedIn,  UserController.form_penduduk_umkm);
+router.post('/tambah-data-penduduk-umkm', isLoggedIn,  UserController.create_penduduk_umkm); 
+
+//GET tambah kbli. 
+router.get('/tambah-data-kbli', isLoggedIn, UserController.form_kbli);
+router.post('/tambah-data-kbli', isLoggedIn, UserController.create_kbli);
+
 
 // GET tambah publikasi.
 router.get('/tambah-data-publikasi', isLoggedIn, UserController.form_publikasi_add);

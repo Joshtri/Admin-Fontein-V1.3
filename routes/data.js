@@ -68,6 +68,46 @@ router.get("/data-kelahiran/delete/:id_lahir", isLoggedIn,  function (request, r
 
 // GET data-keluarga-umkm 🔥 🔥 
 router.get("/data-keluarga-umkm", isLoggedIn, UserController.view_keluarga_umkm);
+router.post("/data-keluarga-umkm/update/:id_keluarga", isLoggedIn,  function (request, response, next) {
+  var no_kk = request.params.no_kk;
+  // response.send("Cek No KK = " + id_keluarga);
+  // response.send("Cek Body = " + JSON.stringify(request.body));
+
+  let query = `
+    UPDATE keluarga_umkm SET
+      id_keluarga = ?,
+      nama_kepala_kel = ?,
+      
+      alamat_tempat_tinggal = ?,
+   
+      
+    WHERE id_keluarga = ?`;
+  database.query(query, [
+    request.body.id_keluarga,
+    request.body.nama_kepala_kel,
+    request.body.alamat_tempat_tinggal,
+   
+
+    no_kk
+  ], (err, row) => {
+    if(err)
+      return response.redirect(url.format({
+        pathname:"/data/data-keluarga-umkm",
+        query: {
+          "sukses": false,
+          "pesan": "Gagal menyimpan perubahan"
+        }
+      }));
+    return response.redirect(url.format({
+      pathname:"/data/data-keluarga-umkm",
+      query: {
+        "sukses": true,
+        "pesan": "Berhasil menyimpan perubahan"
+      }
+    }));
+  })
+});
+
 
 // GET data-penduduk-umkm 🔥 🔥 
 router.get("/data-penduduk-umkm", isLoggedIn, UserController.view_penduduk_umkm);
@@ -175,6 +215,47 @@ router.post("/data-umkm/update/:id_Usaha", isLoggedIn,  function (request, respo
       }));
     return response.redirect(url.format({
       pathname:"/data/data-umkm",
+      query: {
+        "sukses": true,
+        "pesan": "Berhasil menyimpan perubahan"
+      }
+    }));
+  })
+});
+
+// GET data-kbli
+router.get("/data-kbli", isLoggedIn,  UserController.view_kbli_umkm);
+//UPDATE KBLI!!!!
+router.post("/data-kbli/update/:id_kbli", isLoggedIn,  function (request, response, next) {
+  var id_Usaha = request.params.id_kbli;
+  // response.send("Cek No KK = " + no_kk);
+  // response.send("Cek Body = " + JSON.stringify(request.body));
+  let query = `
+    UPDATE kbli SET
+    id_kbli = ?,
+    no_kbli = ?,
+    keterangan = ?,
+    
+
+    WHERE id_kbli = ?`;
+  database.query(query, [
+    request.body.id_kbli,
+    request.body.no_kbli,
+    request.body.keterangan,
+   
+
+    id_kbli
+  ], (err, row) => {
+    if(err)
+      return response.redirect(url.format({
+        pathname:"/data/data-kbli",
+        query: {
+          "sukses": false,
+          "pesan": "Gagal menyimpan perubahan"
+        }
+      }));
+    return response.redirect(url.format({
+      pathname:"/data/data-kbli",
       query: {
         "sukses": true,
         "pesan": "Berhasil menyimpan perubahan"

@@ -135,6 +135,111 @@ exports.create_umkm = (req, res) => {
   );
 };
 
+//KBLI
+exports.form_kbli = (req, res) => {
+  
+  res.render('tambah-data-kbli');
+};
+// Add new  KBLI
+exports.create_kbli = (req, res) => {
+  const {
+    no_kbli,
+    keterangan,
+    
+    
+  } = req.body;
+  let searchTerm = req.body.search;
+
+  // User the connection
+  connection.query(
+    'INSERT INTO kbli SET no_kbli = ?, keterangan = ?',
+    [no_kbli, keterangan],
+    (err, rows) => {
+      if (!err) {
+        res.render("tambah-data-kbli", {
+          alert: "User added successfully.",
+        });
+      } else {
+        console.log(err);
+      }
+      // console.log("The data from user table: \n", rows);
+    }
+  );
+};
+
+//add new keluarga-umkm - get
+exports.form_keluarga_umkm = (req, res) => {
+  res.render('tambah-data-keluarga-umkm');
+};
+// add new kel umkm - post
+exports.create_keluarga_umkm= (req, res) => {
+  const {
+    id_keluarga,
+    nama_kepala_kel,
+    alamat_tempat_tinggal
+    
+    
+  } = req.body;
+  let searchTerm = req.body.search;
+
+  // User the connection
+  connection.query(
+    'INSERT INTO keluarga_umkm SET id_keluarga = ?, nama_kepala_kel = ?, alamat_tempat_tinggal = ?',
+    [id_keluarga, nama_kepala_kel, alamat_tempat_tinggal],
+    (err, rows) => {
+      if (!err) {
+        res.render("tambah-data-keluarga-umkm", {
+          alert: "User added successfully.",
+        });
+      } else {
+        console.log(err);
+      }
+      // console.log("The data from user table: \n", rows);
+    }
+  );
+};
+
+//add new penduduk-umkm - get
+exports.form_penduduk_umkm = (req, res) => {
+  res.render('tambah-data-penduduk-umkm');
+};
+// add new penduduk umkm - post
+exports.create_penduduk_umkm = (req, res) => {
+  const {
+    kel_no_kk_umkm,
+    id_penduduk,
+    nama,
+    umur,
+    pendidikan,
+    
+  } = req.body;
+  let searchTerm = req.body.search;
+
+  // User the connection
+  connection.query(
+    'INSERT INTO penduduk_umkm SET kel_no_kk_umkm = ?, id_penduduk = ?, nama = ?, umur = ?, pendidikan = ?',
+    [kel_no_kk_umkm, id_penduduk, nama, umur, pendidikan],
+    (err, rows) => {
+      if(err) return res.send(err);
+      if(err) return res.send(JSON.stringify(err));
+      if(err)
+        return res.redirect(url.format({
+          pathname:"/data/data-penduduk-umkm",
+          query: {
+            "sukses": false,
+            "pesan": "Gagal menambahkan data"
+          }
+        }));
+      return res.redirect(url.format({
+        pathname:"/data/data-penduduk-umkm",
+        query: {
+          "sukses": true,
+          "pesan": "Berhasil menambahkan data"
+        }
+      }));
+    }
+  );
+};
 
 // //add new penduduk
 // exports.form = (req, res) => {
