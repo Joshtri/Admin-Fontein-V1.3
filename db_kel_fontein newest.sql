@@ -1345,7 +1345,7 @@ INSERT INTO `penduduk` (`nik`, `nama`, `jenis_kelamin`, `hubungan_keluarga`, `la
 (5371041403740010, 'MAURITS DAVIDSON MOOY', 'Laki-Laki', 'Kepala Keluarga', '14/03/1974', 'Sudah Menikah', 'WIRASWASTA', 'SMA/SMLB/MA/SMK/MAK/paket C', 5371042704120019),
 (5371041403930002, 'SAMUEL LUSI', 'Laki-Laki', 'Anak', '14/03/1993', 'Belum Menikah', 'Pelajar/Mahasiswa', 'SMA/SMLB/MA/SMK/MAK/paket C', 5371042712071510),
 (5371041404640003, 'ERWIN FRANGKI DANIEL', 'Laki-Laki', 'Kepala Keluarga', '14/04/1964', 'Sudah Menikah', 'WIRASWASTA', 'SMA/SMLB/MA/SMK/MAK/paket C', 5371040501120023),
-(5371041405100004, 'ARTHA MYLANDRY P\'TROWL SUPENO', 'Laki-Laki', 'Anak', '14/05/2010', 'Belum Menikah', 'Belum Bekerja', 'SD/SDLB/MI/Paket A', 5371040211150003),
+(5371041405100004, 'ARTHA MYLANDRY PTROWL SUPENO', 'Laki-Laki', 'Anak', '14/05/2010', 'Belum Menikah', 'Belum Bekerja', 'SD/SDLB/MI/Paket A', 5371040211150003),
 (5371041503580005, 'BENE DIKTUS LIWU', 'Laki-Laki', 'Kepala Keluarga', '15/03/1958', 'Cerai Mati', 'Pekerja Lepas', 'SMA/SMLB/MA/SMK/MAK/paket C', 5371042312072742),
 (5371041504890004, 'ALFIUS M MANIMAI', 'Laki-Laki', 'Menantu', '15/04/1989', 'Belum Menikah', 'Pelajar/Mahasiswa', 'SMA/SMLB/MA/SMK/MAK/paket C', 5371042312071009),
 (5371041504910004, 'ARMET PAULUS LUSI', 'Laki-Laki', 'Anak', '15/04/1991', 'Belum Menikah', 'Pelajar/Mahasiswa', 'SMA/SMLB/MA/SMK/MAK/paket C', 5371042712071510),
