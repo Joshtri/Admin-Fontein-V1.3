@@ -342,3 +342,83 @@ exports.update_publikasi = (req, res) => {
     // console.log('The data from user table: \n', rows);
   });
 }
+
+
+exports.view_keluarga_umkm = (req,res)=>
+{
+    //connect db.
+    pool.getConnection((err, connection) => {
+      if (err) throw err; //NOT CONNECTED.
+      console.log(`Connected as ID ` + connection.threadId);
+  
+      //show data
+      connection.query("select * from keluarga_umkm ", (err, rows) => {
+        //when done with the connection, release it.
+        connection.release();
+  
+        if (!err) {
+          res.render("data-keluarga-umkm", { 
+            rows, 
+            sukses: req.query.sukses, 
+            pesan: req.query.pesan 
+          });
+        } else {
+          console.log(err);
+        }
+        // console.log("The data from user table: \n", rows);
+      });
+    });
+}
+
+
+exports.view_penduduk_umkm = (req,res)=>
+{
+    //connect db.
+    pool.getConnection((err, connection) => {
+      if (err) throw err; //NOT CONNECTED.
+      console.log(`Connected as ID ` + connection.threadId);
+  
+      //show data
+      connection.query("select * from penduduk_umkm ", (err, rows) => {
+        //when done with the connection, release it.
+        connection.release();
+  
+        if (!err) {
+          res.render("data-penduduk-umkm", { 
+            rows, 
+            sukses: req.query.sukses, 
+            pesan: req.query.pesan 
+          });
+        } else {
+          console.log(err);
+        }
+        // console.log("The data from user table: \n", rows);
+      });
+    });
+}
+
+exports.view_kbli_umkm = (req,res)=>
+{
+    //connect db.
+    pool.getConnection((err, connection) => {
+      if (err) throw err; //NOT CONNECTED.
+      console.log(`Connected as ID ` + connection.threadId);
+  
+      //show data
+      connection.query("select * from kbli ", (err, rows) => {
+        //when done with the connection, release it.
+        connection.release();
+  
+        if (!err) {
+          res.render("data-kbli", { 
+            rows, 
+            sukses: req.query.sukses, 
+            pesan: req.query.pesan 
+          });
+        } else {
+          console.log(err);
+        }
+        // console.log("The data from user table: \n", rows);
+      });
+    });
+}

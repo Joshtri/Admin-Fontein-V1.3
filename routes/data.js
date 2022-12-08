@@ -66,6 +66,14 @@ router.get("/data-kelahiran/delete/:id_lahir", isLoggedIn,  function (request, r
 });
 
 
+// GET data-keluarga-umkm 🔥 🔥 
+router.get("/data-keluarga-umkm", isLoggedIn, UserController.view_keluarga_umkm);
+
+// GET data-penduduk-umkm 🔥 🔥 
+router.get("/data-penduduk-umkm", isLoggedIn, UserController.view_penduduk_umkm);
+
+// GET data-kbli 🔥 🔥 
+router.get("/data-kbli", isLoggedIn, UserController.view_kbli_umkm);
 
 // GET data-kematian
 router.get("/data-kematian", isLoggedIn,  UserController.view_kematian);
