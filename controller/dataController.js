@@ -300,82 +300,13 @@ exports.view_umkm = (req, res) => {
 };
 
 //view keluarga umkm
-exports.view_keluarga_umkm = (req, res) => {
- 
-  //connect db.
-  pool.getConnection((err, connection) => {
-    if (err) throw err; //NOT CONNECTED.
-    console.log(`Connected as ID ` + connection.threadId);
-    
-    //show data
-    connection.query("", (err,rows)=>{
-        //when done with the connection, release it. 
-        connection.release();
 
-        if(!err){
-            res.render("data-keluarga-umkm",{rows});
-        }
-        else{
-            console.log(err);
-        } 
-        // console.log('The data from user table: \n', rows);
-
-    });
-
-  });
-};
 
 //view penduduk umkm
-exports.view_penduduk_umkm = (req, res) => {
- 
-  //connect db.
-  pool.getConnection((err, connection) => {
-    if (err) throw err; //NOT CONNECTED.
-    console.log(`Connected as ID ` + connection.threadId);
-    
-    //show data
-    connection.query("", (err,rows)=>{
-        //when done with the connection, release it. 
-        connection.release();
 
-        if(!err){
-            res.render("data-penduduk-umkm",{rows});
-        }
-        else{
-            console.log(err);
-        } 
-        // console.log('The data from user table: \n', rows);
-
-    });
-
-  });
-};
 
 //View data kbli
-exports.view_kbli_umkm = (req, res) => {
- 
-  //connect db.
-  pool.getConnection((err, connection) => {
-    if (err) throw err; //NOT CONNECTED.
-    console.log(`Connected as ID ` + connection.threadId);
-    
-    //show data
-    connection.query("", (err,rows)=>{
-        //when done with the connection, release it. 
-        connection.release();
 
-        if(!err){
-            res.render("data-kbli",{rows});
-        }
-        else{
-            console.log(err);
-        } 
-        // console.log('The data from user table: \n', rows);
-
-    });
-
-  });
-};
 
 
 

@@ -42,9 +42,8 @@
           <thead>
             <tr>
 
-              <th scope="col" class="text-center">ID KBLI</th>
+              <th scope="col" class="text-center">No</th>
               <th scope="col" class="text-center">No KBLI</th>
-
               <th scope="col" class="text-center">Keterangan</th>
               <th scope="col" class="text-center">Aksi</th>
 
@@ -52,9 +51,9 @@
           </thead>
           <tbody>
             <tr>
-              
+              <% var number = 1; %>
               <% for (let row of rows) {%>
-              <td scope="row" class="text-center" ><%= row.id_kbli %></td>
+              <td scope="row" class="text-center"><%= number %></td>
               <td scope="row" class="text-center" ><%= row.no_kbli %></td>
 
               <td scope="row" class="text-center" ><%= row.keterangan %></td>
@@ -66,18 +65,20 @@
                     data-json="<%= JSON.stringify(row) %>"><i
                       class="fa-solid fa-users-rectangle bg-primary p-2 text-white rounded" data-toggle="tooltip"
                       title="Detail"></i></button>
+
                   <!-- menambah data-form-action sebagai target / alamat proses untuk 
                       mengubah data setiap data yang memiliki alamat update berbeda -->
-                  <button class="border-0"  data-bs-toggle="modal" data-bs-target="#exampleModalEdit" data-json="<%= JSON.stringify(row) %>"
-                  data-form-action="/data/data-kbli/update/<%= row.id_kbli %>"><i class="fa-solid fa-pen-to-square bg-success p-2 text-white rounded"
-                      data-toggle="tooltip" title="Edit"></i></button>
+                      <button class="border-0" data-bs-toggle="modal" data-bs-target="#exampleModalEdit"
+                      data-json="<%= JSON.stringify(row) %>"
+                      data-form-action="/data/data-kbli/update/<%= row.id_kbli %>"><i class="fa-solid fa-pen-to-square bg-success p-2 text-white rounded"
+                          data-toggle="tooltip" title="Edit" ></i></button>
 
-                  <a href="/data/data-kbli/delete/<%= row.id_kbli%>"><button class="border-0"><i
+                  <a href="/data/data-kbli/delete/<%= row.id_kbli %>"><button class="border-0"><i
                         class="fa-solid fa-trash-can bg-danger p-2 text-white rounded" data-toggle="tooltip"
                         title="Delete"></i></button></a>
                 </div>
               </td>
-              
+              <% number++; %>
             </tr>
             <% }%>
           </tbody>
@@ -187,7 +188,7 @@
   </div>
 
  <!-- 🔥🔥🔥🔥 modal pemberitahuan -->
-<!-- <% 
+<% 
  if(typeof sukses != "undefined") {
 %>
 <div class="modal fade modal-pemberitahuan" tabindex="-1" aria-labelledby="exampleModalLabel">
@@ -212,7 +213,7 @@
 </div>
 <% 
  }
-%> -->
+%>
 
       <!-- footer start -->
       <%- include('footer'); -%>
@@ -263,7 +264,7 @@
         // binding data yang diterima dari tombol ke element yang ada pada modal detail
 
         // bind data.no_kk ke anak elemen dari modal detail yang memiliki class no_kk
-        $(modal).find(".id_kbli").text(data.id_kbli) // cara jquery
+        // $(modal).find(".id_kbli").text(data.id_kbli) // cara jquery
         // atau sama dengan cara vanilla javascript (javascript native/biasa)
         // modal.querySelector('.no_kk').innerHTML = data.no_kk
         // binding elemen lainnya yang ada pada modal detail
@@ -285,7 +286,7 @@
         // binding action form dari data target form
         $(modal_edit).find("form").attr("action", target)
         // sedikit berbeda target bindingnya elemen input berdasarkan atribut name
-        $(modal_edit).find("[name='id_kbli']").val(data.id_kbli) // cara jquery
+        // $(modal_edit).find("[name='id_kbli']").val(data.id_kbli) // cara jquery
         $(modal_edit).find("[name='no_kbli']").val(data.no_kbli) // cara jquery
 
         $(modal_edit).find("[name='keterangan']").val(data.keterangan) // cara jquery

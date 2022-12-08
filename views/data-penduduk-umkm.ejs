@@ -63,7 +63,7 @@
     <!-- header end   -->
 
     <div class="col-md-10 p-5 pt-5">
-      <h4><i class="fa-solid fa-user ms-2"></i>&nbsp&nbspDATA PENDUDUK</h4>
+      <h4><i class="fa-solid fa-user ms-2"></i>&nbsp&nbspDATA PENDUDUK - UMKM</h4>
       <hr />
       <a href="/tambah_data/tambah-data-penduduk-umkm" class="btn btn-primary mb-3"><i
           class="fa-solid fa-pen-to-square"></i>Tambah Data</a>
@@ -74,7 +74,7 @@
           <tr>
 
             <th scope="col" class="text-center">No</th>
-            <th scope="col" class="text-center">NIK</th>
+
             <th scope="col" class="text-center">Nama</th>
             <th scope="col" class="text-center">Umur</th>
             <th scope="col" class="text-center">Pendidikan</th>
@@ -88,7 +88,7 @@
             <% var number = 1; %>
             <% for (let row of rows) {%>
             <td scope="row" class="text-center"><%= number %></td>
-            <td scope="row" class="text-center"><%= row.id_penduduk %></td>
+
             <td scope="row" class="text-center"><%= row.nama %></td>
             <td scope="row" class="text-center"><%= row.umur %></td>
             <td scope="row" class="text-center"><%= row.pendidikan %></td>
@@ -137,11 +137,7 @@
           <th style="width:50%">Id KK</th>
           <td>KK010202</td>
         </tr> -->
-          <tr>
-            <th style="width:50%">NIK</th>
-        <!-- target binding 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 -->
-            <td class="id_penduduk"></td>
-          </tr>
+
           <tr>
             <th style="width:50%">No KK</th>
             <td class="kel_no_kk_umkm"></td>
@@ -188,19 +184,8 @@
           <div class="modal-body table-responsive">
             <table class="table table-bordered no-margin">
               <tbody>
-                <tr>
-                  <th style="width:50%">NIK</th>
-                  <td>
-                    <!-- menambah target binding berdasarkan atribut name -->
-                    <input type="text" name="id_penduduk" class="form-control" maxlength="16" onkeypress="return onlyNumberKey(event), isNumber(event)" />
-                  </td>
-                </tr>
-                <tr>
-                  <th style="width:50%">No KK</th>
-                  <td>
-                    <input type="text" name="kel_no_kk_umkm" class="form-control" maxlength="16" onkeypress="return onlyNumberKey(event), isNumber(event)" />
-                  </td>
-                </tr>
+
+
                 <tr>
                   <th style="width:50%">Nama</th>
                   <td>
@@ -328,11 +313,11 @@
         // binding data yang diterima dari tombol ke element yang ada pada modal detail
 
         // bind data.no_kk ke anak elemen dari modal detail yang memiliki class no_kk
-        $(modal).find(".id_penduduk").text(data.id_penduduk) // cara jquery
+        // $(modal).find(".id_penduduk").text(data.id_penduduk) // cara jquery
         // atau sama dengan cara vanilla javascript (javascript native/biasa)
         // modal.querySelector('.no_kk').innerHTML = data.no_kk
         // binding elemen lainnya yang ada pada modal detail
-        $(modal).find(".kel_no_kk_umkm").text(data.kel_no_kk_umkm)
+        // $(modal).find(".kel_no_kk_umkm").text(data.kel_no_kk_umkm)
         $(modal).find(".nama").text(data.nama)
         $(modal).find(".umur").text(data.umur)
         $(modal).find(".pendidikan").text(data.pendidikan)
@@ -355,8 +340,8 @@
         // binding action form dari data target form
         $(modal_edit).find("form").attr("action", target)
         // sedikit berbeda target bindingnya elemen input berdasarkan atribut name
-        $(modal_edit).find("[name='id_penduduk']").val(data.id_penduduk) // cara jquery
-        $(modal_edit).find("[name='kel_no_kk_umkm']").val(data.kel_no_kk_umkm) // cara jquery
+        // $(modal_edit).find("[name='id_penduduk']").val(data.id_penduduk) // cara jquery
+        // $(modal_edit).find("[name='kel_no_kk_umkm']").val(data.kel_no_kk_umkm) // cara jquery
         $(modal_edit).find("[name='nama']").val(data.nama)
         $(modal_edit).find("[name='umur']").val(data.umur)
         $(modal_edit).find("[name='pendidikan']").val(data.pendidikan)

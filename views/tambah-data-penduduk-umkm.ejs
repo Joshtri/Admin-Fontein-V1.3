@@ -49,25 +49,9 @@
               class="form-control"
             />
           </div> -->
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-label">
-                <label>Keluarga UMKM</label>
-                <select class="form-control" name="kel_no_kk_umkm">
-                  <option>-</option>
-                  <% for (let row of keluarga_umkm) {%>
-                    <option value="<%= row.id_keluarga %>"><%= row.id_keluarga %>-<%= row.nama_kepala_kel %></td>
-                  <% } %>
-                </select>
-              </div>
-            </div>
-          </div>
+
           <script src="/javascripts/inputnum.js"></script>
 
-          <div class="form-label">
-            <label>NIK</label>
-            <input name="id_keluarga" type="text" class="form-control" maxlength="16" onkeypress="return onlyNumberKey(event), isNumber(event)"/>
-          </div>
 
           <div class="form-label">
             <label>Nama</label>
@@ -111,7 +95,7 @@
           <a href=""
             ><button type="reset" class="btn btn-danger">RESET</button></a
           >
-          <a href="/data/data-penduduk"
+          <a href="/data/data-penduduk-umkm"
             ><button type="button" class="btn btn-warning">KEMBALI</button></a
           >
         </form>

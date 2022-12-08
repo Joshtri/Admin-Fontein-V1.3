@@ -31,7 +31,7 @@
         </h4>
         <hr />
 
-        <form method="POST" action="/tambah_data/tambah-data-umkm" novalidate>
+        <form method="POST" action="/tambah_data/tambah-data-umkm" >
           <div class="card-body card shadow border-3 bg-gradient">
             <div class="card-header text-center">
               <h5><b>Biodata Usaha</b></h5>
@@ -60,18 +60,42 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-label">
-                  <label>Nama Kepala Keluarga</label>
-                  <input type="text" name="nama_kk" class="form-control" />
+                  <!-- <label>Nama Kepala Keluarga</label>
+                  <input type="text" name="nama_kk" class="form-control" /> -->
                 </div>
               </div>
 
+            <div class="row"> 
+                <div class="form-label">
+                  <label>Nama Kepala Keluarga</label>
+                  <select class="form-control" name="nama_kk">
+                    <option>-</option>
+                    <% for (let row of umkm) {%>
+                      <option value="<%= row.nama_kepala_kel %>"><%= row.nama_kepala_kel%> - <%= row.alamat_tempat_tinggal %></td>
+                    <% } %>
+                  </select>
+                </div>
+            </div>
+
               <div class="col-md-6">
                 <div class="form-label">
-                  <label>Nama Pemilik Usaha</label>
-                  <input type="text" name="nama_pemilik" class="form-control" />
+                  <!-- <label>Nama Pemilik Usaha</label>
+                  <input type="text" name="nama_pemilik" class="form-control" /> -->
                 </div>
               </div>
             </div>
+
+            <div class="row"> 
+              <div class="form-label">
+                <label>Nama Pemilik Usaha</label>
+                <select class="form-control" name="nama_pemilik">
+                  <option>-</option>
+                  <% for (let row of umkm) {%>
+                    <option value="<%= row.nama %>"><%= row.nama %> - <%= row.umur %> - <%= row.pendidikan %></td>
+                  <% } %>
+                </select>
+              </div>
+          </div>
 
             <div class="row">
               <div class="col-md-6">
@@ -87,6 +111,18 @@
                   <input type="text" name="alamat_tempat_tinggal" class="form-control" />
                 </div>
               </div>
+
+              <!-- <div class="row"> 
+                <div class="form-label">
+                  <label>Alamat Tempat Tinggal</label>
+                  <select class="form-control" name="alamat_tempat_tinggal">
+                    <option>-</option>
+                    <% for (let row of umkm) {%>
+                      <option value="<%= row.alamat_tempat_tinggal %>"><%= row.alamat_tempat_tinggal %></td>
+                    <% } %>
+                  </select>
+                </div>
+            </div> -->
 
               <div class="row">
                 <div class="col-md-6">
@@ -322,7 +358,7 @@
 
           <div class="mt-4">
             <button type="submit" class="btn btn-primary">SIMPAN</button>
-            <a href=""><button type="reset" class="btn btn-danger">RESET</button></a>
+            <a><button type="reset" class="btn btn-danger">RESET</button></a>
             <a href="/data/data-umkm"><button type="button" class="btn btn-warning">KEMBALI</button></a>
           </div>
         </form>

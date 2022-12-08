@@ -69,16 +69,16 @@ router.get("/data-kelahiran/delete/:id_lahir", isLoggedIn,  function (request, r
 // GET data-keluarga-umkm 🔥 🔥 
 router.get("/data-keluarga-umkm", isLoggedIn, UserController.view_keluarga_umkm);
 router.post("/data-keluarga-umkm/update/:id_keluarga", isLoggedIn,  function (request, response, next) {
-  var no_kk = request.params.no_kk;
+  var id_keluarga = request.params.id_keluarga;
   // response.send("Cek No KK = " + id_keluarga);
   // response.send("Cek Body = " + JSON.stringify(request.body));
 
   let query = `
     UPDATE keluarga_umkm SET
-      id_keluarga = ?,
+      id_keluarga = ?,  
       nama_kepala_kel = ?,
       
-      alamat_tempat_tinggal = ?,
+      alamat_tempat_tinggal = ?
    
       
     WHERE id_keluarga = ?`;
@@ -88,7 +88,7 @@ router.post("/data-keluarga-umkm/update/:id_keluarga", isLoggedIn,  function (re
     request.body.alamat_tempat_tinggal,
    
 
-    no_kk
+    id_keluarga
   ], (err, row) => {
     if(err)
       return response.redirect(url.format({
@@ -108,9 +108,79 @@ router.post("/data-keluarga-umkm/update/:id_keluarga", isLoggedIn,  function (re
   })
 });
 
+router.get("/data-keluarga-umkm/delete/:id_keluarga", isLoggedIn,  function (request, response, next) {
+  var id_keluarga = request.params.id_keluarga;
+  // User the connection
+  var query = `DELETE FROM keluarga_umkm WHERE id_keluarga = "${id_keluarga}"`;
+  // connection.query('DELETE FROM admin_login WHERE user_id = ?', [req.params.user_id], (err, row
+
+  database.query(query, function (error, data) {
+    if (error) {
+      throw error;
+    } else {
+      response.redirect("/data/data-keluarga-umkm");
+    }
+  });
+});
+
 
 // GET data-penduduk-umkm 🔥 🔥 
 router.get("/data-penduduk-umkm", isLoggedIn, UserController.view_penduduk_umkm);
+router.get("/data-penduduk-umkm/delete/:id_penduduk", isLoggedIn,  function (request, response, next) {
+  var id_penduduk = request.params.id_penduduk;
+  // User the connection
+  var query = `DELETE FROM penduduk_umkm WHERE id_penduduk = "${id_penduduk}"`;
+  // connection.query('DELETE FROM admin_login WHERE user_id = ?', [req.params.user_id], (err, row
+
+  database.query(query, function (error, data) {
+    if (error) {
+      throw error;
+    } else {
+      response.redirect("/data/data-penduduk-umkm");
+    }
+  });
+});
+
+router.post("/data-penduduk-umkm/update/:id_penduduk", isLoggedIn,  function (request, response, next) {
+  var id_penduduk = request.params.id_penduduk;
+  // response.send("Cek No KK = " + id_keluarga);
+  // response.send("Cek Body = " + JSON.stringify(request.body));
+
+  let query = `
+    UPDATE penduduk_umkm SET
+      id_penduduk = ?,
+      nama = ?,
+      umur = ?,
+      pendidikan = ?
+   
+      
+    WHERE id_penduduk = ?`;
+  database.query(query, [
+    request.body.id_penduduk,
+    request.body.nama,
+    request.body.umur,
+    request.body.pendidikan,
+   
+
+    id_penduduk
+  ], (err, row) => {
+    if(err)
+      return response.redirect(url.format({
+        pathname:"/data/data-penduduk-umkm",
+        query: {
+          "sukses": false,
+          "pesan": "Gagal menyimpan perubahan"
+        }
+      }));
+    return response.redirect(url.format({
+      pathname:"/data/data-penduduk-umkm",
+      query: {
+        "sukses": true,
+        "pesan": "Berhasil menyimpan perubahan"
+      }
+    }));
+  })
+});
 
 // GET data-kbli 🔥 🔥 
 router.get("/data-kbli", isLoggedIn, UserController.view_kbli_umkm);
@@ -227,14 +297,14 @@ router.post("/data-umkm/update/:id_Usaha", isLoggedIn,  function (request, respo
 router.get("/data-kbli", isLoggedIn,  UserController.view_kbli_umkm);
 //UPDATE KBLI!!!!
 router.post("/data-kbli/update/:id_kbli", isLoggedIn,  function (request, response, next) {
-  var id_Usaha = request.params.id_kbli;
+  var id_kbli = request.params.id_kbli;
   // response.send("Cek No KK = " + no_kk);
   // response.send("Cek Body = " + JSON.stringify(request.body));
   let query = `
     UPDATE kbli SET
     id_kbli = ?,
     no_kbli = ?,
-    keterangan = ?,
+    keterangan = ?
     
 
     WHERE id_kbli = ?`;
@@ -262,6 +332,21 @@ router.post("/data-kbli/update/:id_kbli", isLoggedIn,  function (request, respon
       }
     }));
   })
+});
+
+router.get("/data-kbli/delete/:id_kbli", isLoggedIn,  function (request, response, next) {
+  var id_kbli = request.params.id_kbli;
+  // User the connection
+  var query = `DELETE FROM kbli WHERE id_kbli = "${id_kbli}"`;
+  // connection.query('DELETE FROM admin_login WHERE user_id = ?', [req.params.user_id], (err, row
+
+  database.query(query, function (error, data) {
+    if (error) {
+      throw error;
+    } else {
+      response.redirect("/data/data-kbli");
+    }
+  });
 });
 
 

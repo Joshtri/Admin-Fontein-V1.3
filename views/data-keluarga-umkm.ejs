@@ -49,7 +49,7 @@
         <thead>
           <tr>
             <th scope="col" class="text-center">No</th>
-            <th scope="col" class="text-center">ID Keluarga</th>
+            <!-- <th scope="col" class="text-center">ID Keluarga</th> -->
             <th scope="col" class="text-center">Kepala Keluarga</th>
             <th scope="col" class="text-center">Alamat</th>
             <th scope="col" class="text-center">Aksi</th>
@@ -58,11 +58,11 @@
         </thead>
         <tbody>
           <tr>
-            <!-- <% var number = 1; %>
-            <% for (let row of rows) {%> -->
+            <% var number = 1; %>
+            <% for (let row of rows) {%>
               
             <td scope="row" class="text-center"><%= number %></td>
-            <td scope="row" class="text-center"><%= row.id_keluarga %></td>
+            <!-- <td scope="row" class="text-center"><%= row.id_keluarga %></td> -->
             <td scope="row" class="text-center"><%= row.nama_kepala_kel %></td>
             <td scope="row" class="text-center"><%= row.alamat_tempat_tinggal %></td>
             <td scope="row" class="text-center">
@@ -76,19 +76,19 @@
                     title="Detail"></i></button>
                 <!-- menambah data-form-action sebagai target / alamat proses untuk 
                     mengubah data setiap data yang memiliki alamat update berbeda -->
-                <button class="border-0" data-bs-toggle="modal" data-bs-target="#exampleModalEdit"
-                data-json="<%= JSON.stringify(row) %>"
-                data-form-action=""><i class="fa-solid fa-pen-to-square bg-success p-2 text-white rounded"
-                    data-toggle="tooltip" title="Edit" ></i></button>
+                    <button class="border-0" data-bs-toggle="modal" data-bs-target="#exampleModalEdit"
+                    data-json="<%= JSON.stringify(row) %>"
+                    data-form-action="/data/data-keluarga-umkm/update/<%= row.id_keluarga %>"><i class="fa-solid fa-pen-to-square bg-success p-2 text-white rounded"
+                        data-toggle="tooltip" title="Edit" ></i></button>
 
-                <a href=""><button class="border-0"><i
+                    <a href="/data/data-keluarga-umkm/delete/<%= row.id_keluarga %>"><button class="border-0"><i
                       class="fa-solid fa-trash-can bg-danger p-2 text-white rounded" data-toggle="tooltip"
                       title="Delete"></i></button></a>
               </div>
             </td>
-            <!-- <% number++; %> -->
+            <% number++; %>
           </tr>
-          <!-- <% }%> -->
+          <% }%>
         </tbody>
       </table>
     </div>
@@ -112,19 +112,15 @@
             <th style="width:50%">Id KK</th>
             <td>KK010202</td>
           </tr> -->
-            <tr>
-              <th style="width:50%">No KK</th>
-              <!-- target binding 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 -->
-              <td class="no_kk"></td>
-            </tr>
+
 
             <tr>
               <th style="width:50%">Kepala Keluarga</th>
-              <td class="kepala_kel"></td>
+              <td class="nama_kepala_kel"></td>
             </tr>
             <tr>
               <th style="width:50%">Alamat</th>
-              <td class="alamat"></td>
+              <td class="alamat_tempat_tinggal"></td>
             </tr>
            
 
@@ -186,23 +182,17 @@
           <div class="modal-body table-responsive">
             <table class="table table-bordered no-margin">
               <tbody>
-                <tr>
-                  <th style="width:50%">ID Keluarga</th>
-                  <td>
-                    <!-- menambah target binding berdasarkan atribut name -->
-                    <input type="text" name="no_kk" class="form-control" maxlength="16" onkeypress="return onlyNumberKey(event), isNumber(event)"/>                  </td>
-                </tr>
 
                 <tr>
                   <th style="width:50%">Kepala Keluarga</th>
                   <td>
-                    <input type="text" name="kepala_kel" class="form-control" />
+                    <input type="text" name="nama_kepala_kel" class="form-control" />
                   </td>
                 </tr>
                 <tr>
                   <th style="width:50%">Alamat</th>
                   <td>
-                    <input type="text" name="alamat" class="form-control" />
+                    <input type="text" name="alamat_tempat_tinggal" class="form-control" />
                   </td>
                 </tr>
                 
@@ -299,9 +289,9 @@
         // binding data yang diterima dari tombol ke element yang ada pada modal detail
 
         // bind data.no_kk ke anak elemen dari modal detail yang memiliki class no_kk
-        $(modal).find(".id_keluarga").text(data.id_keluarga) // cara jquery
+        //$(modal).find(".id_keluarga").text(data.id_keluarga) // cara jquery
         // atau sama dengan cara vanilla javascript (javascript native/biasa)
-        // modal.querySelector('.no_kk').innerHTML = data.no_kk
+
         // binding elemen lainnya yang ada pada modal detail
         $(modal).find(".nama_kepala_kel").text(data.nama_kepala_kel)
         $(modal).find(".alamat_tempat_tinggal").text(data.alamat_tempat_tinggal)
@@ -322,7 +312,7 @@
         // binding action form dari data target form
         $(modal_edit).find("form").attr("action", target)
         // sedikit berbeda target bindingnya elemen input berdasarkan atribut name
-        $(modal_edit).find("[name='id_keluarga']").val(data.id_keluarga) // cara jquery
+        
         $(modal_edit).find("[name='nama_kepala_kel']").val(data.nama_kepala_kel) // cara jquery
         $(modal_edit).find("[name='alamat_tempat_tinggal']").val(data.alamat_tempat_tinggal)
    

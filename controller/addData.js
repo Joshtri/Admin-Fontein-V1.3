@@ -92,9 +92,22 @@ exports.create_keluarga = (req, res) => {
 // (not use)id_Usaha, nama_usaha, alamat_tempat_usaha, nama_kk, umur, nama_pemilik, alamat_tempat_tinggal, pendidikan_pemilik, jenis_lokasi_usaha, jenis_pengelolaan_usaha, kbli, rincian_kgiatan_usaha, omset, kekayaan_bersih_usaha, jumlah_tenaga_kerja, modal_usaha, bina_usaha
 //add new umkm
 exports.form_umkm = (req, res) => {
-  
-  res.render('tambah-data-umkm');
+  pool.getConnection((err, conn) => {
+    /**
+     * karena int pada js memiliki batasan maka no_kk diconvert ke
+     * string
+     */
+    conn.query("SELECT * FROM keluarga_umkm, penduduk_umkm", (err, rows) => {
+      if(err) throw new Error(err)
+      conn.release();
+      res.render("tambah-data-umkm", { umkm: rows });
+      // console.log(rows);
+    });
+  });
+
 };
+
+// SELECT * FROM keluarga_umkm, penduduk_umkm;
 // Add new  UMKM
 exports.create_umkm = (req, res) => {
   const {
@@ -171,6 +184,7 @@ exports.create_kbli = (req, res) => {
 exports.form_keluarga_umkm = (req, res) => {
   res.render('tambah-data-keluarga-umkm');
 };
+
 // add new kel umkm - post
 exports.create_keluarga_umkm= (req, res) => {
   const {
@@ -206,19 +220,18 @@ exports.form_penduduk_umkm = (req, res) => {
 // add new penduduk umkm - post
 exports.create_penduduk_umkm = (req, res) => {
   const {
-    kel_no_kk_umkm,
     id_penduduk,
     nama,
     umur,
-    pendidikan,
+    pendidikan
     
   } = req.body;
   let searchTerm = req.body.search;
 
   // User the connection
   connection.query(
-    'INSERT INTO penduduk_umkm SET kel_no_kk_umkm = ?, id_penduduk = ?, nama = ?, umur = ?, pendidikan = ?',
-    [kel_no_kk_umkm, id_penduduk, nama, umur, pendidikan],
+    'INSERT INTO penduduk_umkm SET id_penduduk = ?, nama = ?, umur = ?, pendidikan = ?',
+    [id_penduduk, nama, umur, pendidikan],
     (err, rows) => {
       if(err) return res.send(err);
       if(err) return res.send(JSON.stringify(err));
@@ -518,3 +531,7 @@ exports.create_keluar = (req,res) =>{
     }
   );
 };
+
+
+
+
