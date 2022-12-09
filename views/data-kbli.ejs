@@ -68,8 +68,7 @@
 
                   <!-- menambah data-form-action sebagai target / alamat proses untuk 
                       mengubah data setiap data yang memiliki alamat update berbeda -->
-                      <button class="border-0" data-bs-toggle="modal" data-bs-target="#exampleModalEdit"
-                      data-json="<%= JSON.stringify(row) %>"
+                      <button class="border-0" data-bs-toggle="modal" data-bs-target="#exampleModalEdit" data-json="<%= JSON.stringify(row) %>"
                       data-form-action="/data/data-kbli/update/<%= row.id_kbli %>"><i class="fa-solid fa-pen-to-square bg-success p-2 text-white rounded"
                           data-toggle="tooltip" title="Edit" ></i></button>
 
@@ -162,7 +161,7 @@
                         <tr>
                           <th style="width:50%">Nomor KBLI</th>
                           <td>
-                            <input type="hidden" name="no_kbli" class="form-control">
+                            <input type="text" name="no_kbli" class="form-control">
                           </td>
                         </tr>
                         <tr>
@@ -171,13 +170,19 @@
                             <input type="text" name="keterangan" class="form-control">
                           </td>
                         </tr>
-                        </tbody>
-                    </table>
-               </div>
+                      </tbody>
+                  </table>
+               
+              </div>
+            </div>
+          </div>
+
+            
     
              
          
-
+            
+          
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Simpan</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -264,7 +269,7 @@
         // binding data yang diterima dari tombol ke element yang ada pada modal detail
 
         // bind data.no_kk ke anak elemen dari modal detail yang memiliki class no_kk
-        // $(modal).find(".id_kbli").text(data.id_kbli) // cara jquery
+        $(modal).find(".id_kbli").text(data.id_kbli) // cara jquery
         // atau sama dengan cara vanilla javascript (javascript native/biasa)
         // modal.querySelector('.no_kk').innerHTML = data.no_kk
         // binding elemen lainnya yang ada pada modal detail
@@ -286,9 +291,8 @@
         // binding action form dari data target form
         $(modal_edit).find("form").attr("action", target)
         // sedikit berbeda target bindingnya elemen input berdasarkan atribut name
-        // $(modal_edit).find("[name='id_kbli']").val(data.id_kbli) // cara jquery
+        $(modal_edit).find("[name='id_kbli']").val(data.id_kbli) // cara jquery
         $(modal_edit).find("[name='no_kbli']").val(data.no_kbli) // cara jquery
-
         $(modal_edit).find("[name='keterangan']").val(data.keterangan) // cara jquery
         
       });
